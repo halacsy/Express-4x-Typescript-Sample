@@ -5,7 +5,7 @@
  * Module dependencies.
  */
 
-import app = require('../app');
+import app = require('./app');
 import debugModule = require('debug');
 import http = require('http');
 
@@ -29,6 +29,7 @@ var server = http.createServer(app);
  */
 
 server.listen(port);
+console.log("server started on ", port);
 server.on('error', onError);
 server.on('listening', onListening);
 

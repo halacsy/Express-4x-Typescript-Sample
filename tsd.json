@@ -25,6 +25,9 @@
     },
     "debug/debug.d.ts": {
       "commit": "32f0a90dab26f70b206407ac24d4d622d0f0f408"
+    },
+    "mongodb/mongodb.d.ts": {
+      "commit": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
     }
   }
 }

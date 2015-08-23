@@ -1,5 +1,5 @@
 
-/// <reference path='./typings/tsd.d.ts' />
+/// <reference path='../typings/tsd.d.ts' />
 
 import express = require('express');
 import path = require('path');
@@ -10,11 +10,16 @@ import bodyParser = require('body-parser');
 
 import routes = require('./routes/index');
 import users = require('./routes/users');
+import orm = require('orm');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// dirname equals to the directory where the main.js is
+// in this case this is app.js is in deploy/server
+// but we put views in to deploy/views
+app.set('views', path.join(__dirname, '../views'));
+console.log("dirname", __dirname)
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
@@ -43,6 +48,7 @@ if (app.get('env') === 'development') {
 
    app.use((err: any, req, res, next) => {
        res.status(err['status'] || 500);
+       console.log(err.message);
        res.render('error', {
            message: err.message,
            error: err
@@ -54,6 +60,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use((err: any, req, res, next) => {
    res.status(err.status || 500);
+   console.log(err.message);
    res.render('error', {
        message: err.message,
        error: {}
