@@ -2,7 +2,9 @@ var gulp = require('gulp'),
   nodemon = require('gulp-nodemon'),
   livereload = require('gulp-livereload'),
   ts = require('gulp-typescript'),
-  sass = require('gulp-sass');
+  sass = require('gulp-sass'),
+  env = require('gulp-env');
+  
 
 gulp.task('sass', function () {
   console.log('Compiling sass');
@@ -46,6 +48,13 @@ gulp.task('deploy', ['build'], function() {
 });
 
 gulp.task('serve', function () {
+  env({
+    file: '.env',
+    vars: {
+      // any variables you want to overwrite
+    }
+  });
+  
   livereload.listen();
   nodemon({
     script: 'deploy/server/www.js',
