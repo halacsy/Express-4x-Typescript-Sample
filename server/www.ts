@@ -37,13 +37,14 @@ server.on('listening', onListening);
 
 // setting up database
 import mongoose   = require('mongoose');
-console.info("connecting to mongodb @ ", process.env.MONGO)
-var connection = mongoose.createConnection(process.env.MONGO);
+console.info("connecting to mongodb @ ", process.env.MONGODB_URI)
+var connection = mongoose.createConnection(process.env.MONGODB_URI);
 
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.once('open', function (callback) {
   console.info("successfully connected to mongodb")
 });
+
 
 /**
  * Normalize a port into a number, string, or false.
