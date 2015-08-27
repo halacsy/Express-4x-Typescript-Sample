@@ -8,3 +8,4 @@
 /// <reference path="orm.d.ts" />
 /// <reference path="sql-query.d.ts" />
 /// <reference path="mongodb/mongodb.d.ts" />
+/// <reference path="mongoose/mongoose.d.ts" />

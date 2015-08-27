@@ -28,6 +28,9 @@
     },
     "mongodb/mongodb.d.ts": {
       "commit": "8f081073e6cb416f901b272810d8b04d6e01c9e0"
+    },
+    "mongoose/mongoose.d.ts": {
+      "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
     }
   }
 }
