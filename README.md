@@ -1,5 +1,8 @@
 # Express-4x-Typescript-Sample
-Sample Node.js Express 4.x app with [TypeScript](http://www.typescriptlang.org). Useful for anyone starting to write an Express app with TypeScript.
+Sample Node.js Express 4.x app with [TypeScript](http://www.typescriptlang.org). Useful for anyone starting to write an Express app with 
+TypeScript.
+
+Project is built by `gulp`
 
 Generated with
 --------------
@@ -11,10 +14,11 @@ Generated with
 Requirements
 ------------
 Have Node.js and npm installed.
+Checkout the repo and inside of it, run `npm install`.
 
 How to run
 ----------
-Checkout the repo and inside of it, run `./run.sh`.
+Run `gulp serve`
 This will
 - install all node packages, plus typescript and tsd
 - run tsd to pull all required typings
