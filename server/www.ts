@@ -36,14 +36,19 @@ server.on('listening', onListening);
 
 
 // setting up database
-import mongoose   = require('mongoose');
+import m   = require('mongoose');
+if(!process.env.MONGODB_URI) {
+  throw new Error("MONGODB_URI is not set")
+}
 console.info("connecting to mongodb @ ", process.env.MONGODB_URI)
-var connection = mongoose.createConnection(process.env.MONGODB_URI);
-
-connection.on('error', console.error.bind(console, 'connection error:'));
-connection.once('open', function (callback) {
-  console.info("successfully connected to mongodb")
+var mongoose = m.connect(process.env.MONGODB_URI, function(err) {
+  if(err) {
+    console.error("can't connect to the db", err);
+    throw err;
+  }
+  console.info("successfully connected to mongodb");
 });
+
 
 
 /**
