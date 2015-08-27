@@ -31,6 +31,21 @@
     },
     "mongoose/mongoose.d.ts": {
       "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
+    },
+    "mime/mime.d.ts": {
+      "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
+    },
+    "passport/passport.d.ts": {
+      "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
+    },
+    "passport-facebook/passport-facebook.d.ts": {
+      "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
+    },
+    "passport-facebook-token/passport-facebook-token.d.ts": {
+      "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
     }
   }
 }
