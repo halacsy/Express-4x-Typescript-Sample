@@ -14,3 +14,4 @@
 /// <reference path="serve-static/serve-static.d.ts" />
 /// <reference path="passport-facebook/passport-facebook.d.ts" />
 /// <reference path="passport-facebook-token/passport-facebook-token.d.ts" />
+/// <reference path="express-session/express-session.d.ts" />

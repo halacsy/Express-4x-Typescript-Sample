@@ -3,8 +3,8 @@ var gulp = require('gulp'),
   livereload = require('gulp-livereload'),
   ts = require('gulp-typescript'),
   sass = require('gulp-sass'),
-  env = require('gulp-env');
-  
+  env = require('gulp-env'),
+  nodeDebug = require('gulp-node-debug');
 
 gulp.task('sass', function () {
   console.log('Compiling sass');
@@ -47,14 +47,8 @@ gulp.task('deploy', ['build'], function() {
     .pipe(gulp.dest('./deploy'));
 });
 
-gulp.task('serve', function () {
-  env({
-    file: '.env',
-    vars: {
-      // any variables you want to overwrite
-    }
-  });
-  
+gulp.task('serve',  ['deploy','set-env'], function () {
+ 
   livereload.listen();
   nodemon({
     script: 'deploy/server/www.js',
@@ -66,7 +60,26 @@ gulp.task('serve', function () {
   });
 });
 
+gulp.task('debug', ['set-env'], function() {
+    gulp.src('deploy/server/www.js')
+        .pipe(nodeDebug({
+            debugBrk: true
+        }));
+});
+
+gulp.task('set-env', function () {
+    env({
+        file: '.env.json',
+       // type: 'ini',
+        vars:{
+         // MONGODB_URI : 'localhost/test'
+        }
+    });
+});
+
+
 gulp.task('default', [
+  'set-env',
   'build',
   'watch',
   'serve'

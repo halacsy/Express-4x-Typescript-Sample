@@ -2,6 +2,7 @@
 /// <reference path='../typings/tsd.d.ts' />
 
 import express = require('express');
+import session = require('express-session');
 import path = require('path');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
@@ -10,7 +11,10 @@ import bodyParser = require('body-parser');
 
 import routes = require('./routes/index');
 import users = require('./routes/users');
-import orm = require('orm');
+import passport = require('passport');
+import passportConfig = require('./config/passport');
+passportConfig.init(passport);
+import login = require('./routes/login')
 
 var app = express();
 
@@ -21,8 +25,7 @@ var app = express();
 // in this case this is app.js is in deploy/server
 // but we put views in to deploy/views
 app.set('views', path.join(__dirname, '../views'));
-console.log("dirname", __dirname)
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -32,8 +35,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+  
+app.use('/', login.router);
 app.use('/', routes);
 app.use('/users', users);
+
 
 //catch 404 and forward to error handler
 app.use((req, res, next) => {

@@ -12,7 +12,7 @@ var router = express.Router();
 
 router.get('/create', function(req, res, next){
   var newUser = new User();
-  newUser.name = "janos";
+  newUser.displayName = "janos";
   newUser.save(function(err) {
     if (err) throw err;
     console.log('User saved successfully!');

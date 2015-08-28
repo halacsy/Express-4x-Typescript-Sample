@@ -46,6 +46,9 @@
     },
     "passport-facebook-token/passport-facebook-token.d.ts": {
       "commit": "e5de5c4daf8cdc33ed60704cd6e8021c99a89f92"
+    },
+    "express-session/express-session.d.ts": {
+      "commit": "67605e10f6eb01c9d4a0d13719d804d6dea9e1cb"
     }
   }
 }
