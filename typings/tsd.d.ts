@@ -15,3 +15,5 @@
 /// <reference path="passport-facebook/passport-facebook.d.ts" />
 /// <reference path="passport-facebook-token/passport-facebook-token.d.ts" />
 /// <reference path="express-session/express-session.d.ts" />
+/// <reference path="superagent/superagent.d.ts" />
+/// <reference path="supertest/supertest.d.ts" />
