@@ -40,11 +40,9 @@ router.get('/auth/facebook/callback', passport.authenticate('facebook', { succes
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated())
     {
-        console.log("user is authenticated", req.user)
         return next();
     }
     // if they aren't redirect them to the home page
-    console.log("user is not authenticated");
     res.redirect('/');
 }
 

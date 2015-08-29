@@ -4,8 +4,19 @@ var gulp = require('gulp'),
   ts = require('gulp-typescript'),
   sass = require('gulp-sass'),
   env = require('gulp-env'),
-  nodeDebug = require('gulp-node-debug');
+  nodeDebug = require('gulp-node-debug'),
+  mocha = require('gulp-mocha'),
+  gutil = require('gulp-util');
 
+gulp.task('mocha', function() {
+    return gulp.src(['test/*.js'], { read: false })
+        .pipe(mocha({ reporter: 'list' }))
+        .on('error', gutil.log);
+});
+
+gulp.task('watch-mocha', function() {
+    gulp.watch(['lib/**', 'test/**'], ['mocha']);
+});
 gulp.task('sass', function () {
   console.log('Compiling sass');
   return gulp.src('./public/scss/style.scss')
@@ -77,6 +88,17 @@ gulp.task('set-env', function () {
     });
 });
 
+
+gulp.task('test', ['typescript', 'set-env'], function() {
+    return gulp.src(['deploy/server/test/*.js'], { read: false })
+        .pipe(mocha({ reporter: 'list' }))
+        .on('error', gutil.log);
+});
+/*
+gulp.task('test', function() {
+    gulp.watch(['server/**'], ['mocha']);
+});
+*/
 
 gulp.task('default', [
   'set-env',
