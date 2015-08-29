@@ -27,9 +27,13 @@
     "gulp": "^3.9.0",
     "gulp-env": "^0.2.0",
     "gulp-livereload": "^3.8.0",
+    "gulp-mocha": "^2.1.3",
     "gulp-node-debug": "0.0.3",
     "gulp-nodemon": "^2.0.4",
     "gulp-sass": "^2.0.4",
-    "gulp-typescript": "^2.8.1"
+    "gulp-typescript": "^2.8.1",
+    "gulp-util": "^3.0.6",
+    "mocha": "^2.2.5",
+    "supertest": "^1.1.0"
   }
 }
