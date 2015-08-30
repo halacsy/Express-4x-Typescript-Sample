@@ -9,12 +9,9 @@ import logger = require('morgan');
 import cookieParser = require('cookie-parser');
 import bodyParser = require('body-parser');
 
-import routes = require('./routes/index');
+
 import users = require('./routes/users');
-import passport = require('passport');
-import passportConfig = require('./auth/passport');
-passportConfig.init(passport);
-import login = require('./routes/login')
+
 
 var app = express();
 
@@ -36,11 +33,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({ secret: 'keyboard cat' }));
+import passport = require('passport');
 app.use(passport.initialize());
 app.use(passport.session());
-  
-app.use('/', login.router);
-app.use('/', routes);
+import passportConfig = require('./auth/passport');
+passportConfig.init(passport);
+
+
+app.use('/', require('./auth/routes').router);
+
+app.use('/', require('./routes/index'));
 app.use('/users', users);
 
 
