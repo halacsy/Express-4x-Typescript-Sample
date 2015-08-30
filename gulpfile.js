@@ -48,7 +48,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('views', function() {
-  gulp.src('views/**/*').pipe(gulp.dest('deploy/views'))
+  gulp.src('server/**/views/**/*').pipe(gulp.dest('./deploy/server'))
 });
 
 gulp.task('build', ['sass', 'typescript', 'images', 'views']);
@@ -90,7 +90,7 @@ gulp.task('set-env', function () {
 
 
 gulp.task('test', ['typescript', 'set-env'], function() {
-    return gulp.src(['deploy/server/test/*.js'], { read: false })
+    return gulp.src(['deploy/server/**/test.js'], { read: false })
         .pipe(mocha({ reporter: 'list' }))
         .on('error', gutil.log);
 });

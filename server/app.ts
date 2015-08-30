@@ -32,16 +32,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({ secret: 'keyboard cat' }));
-import passport = require('passport');
-app.use(passport.initialize());
-app.use(passport.session());
-import passportConfig = require('./auth/passport');
-passportConfig.init(passport);
-
-
-app.use('/', require('./auth/routes').router);
-
+app.use('/', require('./auth/app'));
 app.use('/', require('./routes/index'));
 app.use('/users', users);
 
