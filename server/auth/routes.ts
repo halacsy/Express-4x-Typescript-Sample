@@ -3,7 +3,7 @@
 import express = require('express');
 import passport = require('passport');
 import facebook = require('passport-facebook')
-import userModel = require("../models/user");
+import userModel = require("model");
  
 import IUser = userModel.IUser;
 import User = userModel.User;

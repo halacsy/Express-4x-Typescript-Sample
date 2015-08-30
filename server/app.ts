@@ -12,7 +12,7 @@ import bodyParser = require('body-parser');
 import routes = require('./routes/index');
 import users = require('./routes/users');
 import passport = require('passport');
-import passportConfig = require('./config/passport');
+import passportConfig = require('./auth/passport');
 passportConfig.init(passport);
 import login = require('./routes/login')
 

@@ -2,7 +2,7 @@
 
 import express = require('express');
 
-import userModel = require("../models/user");
+import userModel = require("../auth/model");
  
 import IUser = userModel.IUser;
 import User = userModel.User;

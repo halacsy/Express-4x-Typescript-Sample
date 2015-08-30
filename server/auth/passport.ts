@@ -1,16 +1,15 @@
 /// <reference path='../../typings/tsd.d.ts' />
+/// <reference path="../auth/model.ts"/>
 
 // load all the things we need
 import Passport = require('passport')
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 // load up the user model
-import userModel = require("../models/user");
- 
-import IUser = userModel.IUser;
-import User = userModel.User;
-
-import configAuth = require('./auth');
+//import userModel = require("../models/user");
+import x = require('../auth/model');
+var User = x.User;
+import facebookAuthConf = require('./facebookAuthConf');
 
 
 export function init (passport:Passport.Passport) {
@@ -39,9 +38,9 @@ export function init (passport:Passport.Passport) {
     passport.use(new FacebookStrategy({
 
         // pull in our app id and secret from our auth.js file
-        clientID        : configAuth.facebookAuth.clientID,
-        clientSecret    : configAuth.facebookAuth.clientSecret,
-        callbackURL     : configAuth.facebookAuth.callbackURL,
+        clientID        : facebookAuthConf.clientID,
+        clientSecret    : facebookAuthConf.clientSecret,
+        callbackURL     : facebookAuthConf.callbackURL,
         enableProof: true
     },
 

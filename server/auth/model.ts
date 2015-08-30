@@ -3,7 +3,7 @@
 import mongoose     = require('mongoose');
 var Schema       = mongoose.Schema;
 
-export var UserSchema   = new Schema({
+var UserSchema   = new Schema({
     name : {familyName : String, givenName:String, middleName:String },
     email : String,
     facebook: { id: String, profileUrl: String, token:String },
@@ -15,9 +15,9 @@ export var UserSchema   = new Schema({
 export interface IUser extends mongoose.Document {
     displayName: string;
     name? : {
-         familyName: string;
-         givenName: string;
-         middleName?: string;
+        familyName: string;
+        givenName: string;
+        middleName?: string;
     };
     email? : String;
     facebook : {
@@ -27,7 +27,6 @@ export interface IUser extends mongoose.Document {
     }
     
 };
-
+    
 
 export var User = mongoose.model<IUser>('UserSchema', UserSchema);
-    
